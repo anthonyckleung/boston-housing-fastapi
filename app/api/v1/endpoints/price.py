@@ -3,20 +3,14 @@ import numpy as np
 from core import config
 # from sklearn.linear_model import LinearRegression
 from fastapi import (APIRouter, status)
-from pydantic import BaseModel
+from models.schema import Item 
 
 LM_PATH = config.MODEL_PATH
 
 router = APIRouter()
 
 lm = joblib.load(LM_PATH)
-
-
-class Item(BaseModel):
-    num_rooms: int 
-    pupil_teacher_ratio: float 
-    l_stat: float 
-
+feature_list = ['RM', 'PTRATIO', 'LSTAT']
 
 
 @router.post('/price/model/inference')
@@ -29,9 +23,20 @@ def price_inference(item: Item):
 
     # Make price prediction
     price_prediction = lm.predict(data_array)
-    return {'price': price_prediction[0]}
+    payload = dict(
+        query = item.dict(),
+        price = round(price_prediction[0], 2)
+    )
+    return payload
 
 
-@router.get('/price/model/info')
+@router.get('/price/model/info/')
 def model_info():
-    return {'message': 'done'}
+    estimator_type = lm._estimator_type
+    coefficients = dict(zip(feature_list,lm.coef_))
+
+    payload = dict(
+        estimator = estimator_type,
+        coefficients = coefficients
+    )
+    return payload
