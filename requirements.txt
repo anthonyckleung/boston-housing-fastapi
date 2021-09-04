@@ -1,6 +1,9 @@
-boto3
 black
+ipywidgets
+matplotlib
+pandas
 pylint
 fastapi==0.68.1
+seaborn
 sklearn
 uvicorn[standard]
