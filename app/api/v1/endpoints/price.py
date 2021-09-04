@@ -1,7 +1,6 @@
 import joblib
 import numpy as np
 from core import config
-# from sklearn.linear_model import LinearRegression
 from fastapi import (APIRouter, status)
 from models.schema import Item 
 
@@ -25,13 +24,13 @@ def price_inference(item: Item):
     price_prediction = lm.predict(data_array)
     payload = dict(
         query = item.dict(),
-        price = round(price_prediction[0], 2)
+        price = round(price_prediction[0], 2) * 1000  # N.b. Value was in 1000s
     )
     return payload
 
 
 @router.get('/price/model/info')
-def model_info():
+async def model_info():
     estimator_type = lm._estimator_type
     coefficients = dict(zip(feature_list,lm.coef_))
 
