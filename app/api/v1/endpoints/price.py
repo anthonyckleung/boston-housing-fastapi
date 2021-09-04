@@ -30,7 +30,7 @@ def price_inference(item: Item):
     return payload
 
 
-@router.get('/price/model/info/')
+@router.get('/price/model/info')
 def model_info():
     estimator_type = lm._estimator_type
     coefficients = dict(zip(feature_list,lm.coef_))
