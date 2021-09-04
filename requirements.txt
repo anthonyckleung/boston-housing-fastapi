@@ -5,5 +5,5 @@ pandas
 pylint
 fastapi==0.68.1
 seaborn
-sklearn
+scikit-learn
 uvicorn[standard]
