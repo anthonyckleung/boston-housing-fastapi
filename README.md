@@ -1,1 +1,1 @@
-# boston-housing-fastapi
+# Boston Dataset - Model Inference with FastAPI

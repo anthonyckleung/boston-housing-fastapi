@@ -1,0 +1,6 @@
+boto3
+black
+pylint
+fastapi==0.68.1
+sklearn
+uvicorn[standard]
