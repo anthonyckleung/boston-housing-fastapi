@@ -1,11 +1,11 @@
-FROM conda/miniconda3:latest
+FROM continuumio/miniconda3:4.10.3
 
 RUN mkdir -p /mlflow/mlruns
 
 WORKDIR /mlflow
 
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
+# ENV LC_ALL=C.UTF-8
+# ENV LANG=C.UTF-8
 
 # RUN echo "export LC_ALL=$LC_ALL" >> /etc/profile.d/locale.sh
 # RUN echo "export LANG=$LANG" >> /etc/profile.d/locale.sh
@@ -13,10 +13,12 @@ ENV LANG=C.UTF-8
 
 RUN apt-get update && apt-get install -y \
     build-essential \
-    python3-dev \
-    libpq-dev
+    # python3-dev \
+    # libpq-dev
+    && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./requirements.txt
+COPY requirements.txt .
+# RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.txt
 RUN pip install -U pip && \
     # pip install --ignore-installed google-cloud-storage && \
     # pip install boto3 psycopg2 mlflow==1.9.1 && \
