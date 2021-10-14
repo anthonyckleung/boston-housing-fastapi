@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  mlflow-ui:
+        build: ./mlflow
+        ports:
+            - 0.0.0.0:80:80
+        environment:
+        #     DB_URI: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgresql:5432/mlflow-db
+        #     MLFLOW_TRACKING_USERNAME: "${MLFLOW_TRACKING_USERNAME}"
+        #     MLFLOW_TRACKING_PASSWORD: "${MLFLOW_TRACKING_PASSWORD}"
+            MLFLOW_ARTIFACT_ROOT: "${MLFLOW_ARTIFACT_ROOT}"
+        restart: always
+        # depends_on:
+        #     - mlflow-server
+        # volumes:
+        #         - "${MLFLOW_ARTIFACT_ROOT}:${MLFLOW_ARTIFACT_ROOT}"
+        entrypoint: ./start_mlflow_ui.sh
+
