@@ -1,5 +1,7 @@
 # Boston Housing Price Model - FastAPI Demo
 
+[![CI](https://github.com/anthonyckleung/boston-housing-fastapi/actions/workflows/main.yml/badge.svg)](https://github.com/anthonyckleung/boston-housing-fastapi/actions/workflows/main.yml)
+
 Expose a trained and saved [linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) model with [FastAPI](https://fastapi.tiangolo.com/).
 
 
