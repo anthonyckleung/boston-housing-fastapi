@@ -25,8 +25,7 @@ COPY requirements.txt .
 #     # pip install boto3 psycopg2 mlflow==1.9.1 && \
 #     # pip install gunicorn==19.9.0
 #     pip install --no-cache-dir -r requirements.txt
-RUN --mount=type=cache,target=/root/.cache/pip \
-        pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # COPY ./start.sh ./start.sh
 # RUN chmod +x ./start.sh
