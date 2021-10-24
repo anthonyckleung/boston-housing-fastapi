@@ -8,8 +8,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 SEED = 42
 
-mlflow.set_tracking_uri("http://localhost:5000")   # ML tracking URI?
-mlflow.set_experiment(experiment_name = "Boston Housing Regression")
+mlflow.set_tracking_uri("http://localhost:5000")  # ML tracking URI?
+mlflow.set_experiment(experiment_name="Boston Housing Regression")
 tags = {"dataset": "Boston"}
 
 
@@ -22,9 +22,11 @@ def eval_metrics(actual, pred):
 
 def train():
     boston_data = datasets.load_boston()
-    X_train, X_test, y_train, y_test = train_test_split(boston_data.data, boston_data.target, random_state=SEED)
+    X_train, X_test, y_train, y_test = train_test_split(
+        boston_data.data, boston_data.target, random_state=SEED
+    )
 
-    with mlflow.start_run(run_name = "Sk_Linear_Regression"):
+    with mlflow.start_run(run_name="Sk_Linear_Regression"):
         mlflow.set_tags(tags)
         lr = LinearRegression()
         lr.fit(X_train, y_train)
@@ -42,5 +44,5 @@ def train():
         mlflow.log_artifact(local_path="./mlflow/train.py", artifact_path="code")
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     train()
