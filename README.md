@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/anthonyckleung/boston-housing-fastapi/actions/workflows/main.yml/badge.svg)](https://github.com/anthonyckleung/boston-housing-fastapi/actions/workflows/main.yml)
 
-**(2021-10-24)**: Working towards setting up MLFlow as a separate service to model inference. Remains work-in-progress.
 
 
 Expose a trained and saved [linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) model with [FastAPI](https://fastapi.tiangolo.com/).
@@ -16,7 +15,7 @@ docker-compose up
 ```
 
 
-<!-- ## Alternative: Run with Docker
+## Alternative: Run with Docker
 
 Build the image:
 ```
@@ -26,6 +25,6 @@ $ docker build -t myimage .
 Start the Docker container:
 ```
 $ docker run -p 8000:8000 myimage
-``` -->
+``` 
 
-<!-- ![](imgs/fastapi_docs.png) -->
+![](imgs/fastapi_docs.png)
