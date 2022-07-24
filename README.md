@@ -9,13 +9,19 @@ Expose a trained and saved [linear regression](https://scikit-learn.org/stable/m
 The Boston house-prices dataset was used to train the model. From EDA only 3 features are selected for modeling, namely: `RM`, `PTRATIO`, and `LSTAT`. Refer to notebook found in `notebooks/boston-housing.ipynb`.
 
 
-## Build and Run the Stack
+## Build and Run the Stack (Not Working; WIP)
 ```
 docker-compose up
 ```
 
 
-## Alternative: Run with Docker
+## Build Backend Only
+
+Go into `/backend`
+
+```
+$ cd backend
+```
 
 Build the image:
 ```
@@ -25,6 +31,11 @@ $ docker build -t myimage .
 Start the Docker container:
 ```
 $ docker run -p 8000:8000 myimage
-``` 
+```
+
+To go into the api docs, go:
+```
+http://0.0.0.0:8000/api/v1/docs
+```
 
 ![](imgs/fastapi_docs.png)
