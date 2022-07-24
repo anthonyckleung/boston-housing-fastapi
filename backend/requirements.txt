@@ -1,0 +1,6 @@
+black
+pylint
+pytest-cov
+fastapi==0.68.1
+scikit-learn==0.24.2
+uvicorn[standard]
